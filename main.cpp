@@ -1,20 +1,21 @@
 // ***************************************	//
-// »úÆ÷ÊÓ¾õ¿Î³ÌÉè¼Æ-¿ÎÌâ5
-// ¹ş¶û±õ¹¤Òµ´óÑ§£¨ÉîÛÚ£©×Ô¶¯»¯×¨Òµ
+// æœºå™¨è§†è§‰è¯¾ç¨‹è®¾è®¡-è¯¾é¢˜5
+// å“ˆå°”æ»¨å·¥ä¸šå¤§å­¦ï¼ˆæ·±åœ³ï¼‰è‡ªåŠ¨åŒ–ä¸“ä¸š
 // 2024/5/30
-// ÏîÄ¿ËµÃ÷
-// »úÆ÷ÊÓ¾õ³ß´ç²âÁ¿ÏîÄ¿
-// Ïò³ÌĞòÊäÈëÍ¼Æ¬£¬²âÁ¿¶ÔÓ¦µÄÎïÌå¿í¶ÈºÍ¼ä¸ô¿í¶È
-// 1D²âÁ¿£¬ÑÇÏñËØ¾«¶È£¬²¢¿¼ÂÇ¼ÆËãÊ±¼ä
-// ¸Ã³ÌĞò½ö¹©²Î¿¼£¬Êµ¼ÊÉÏĞ´µÃ±È½ÏÀÃµ«ÊÇÍøÉÏÓÖÃ»ÓĞÌ«¶à²Î¿¼µÄËùÒÔÎÒÉÏ´«ÁËÎÒµÄ£¬²Î¿¼µÄÖ÷ÒªÊÇÒ»¸öÑ§Ğ£µÄ£¬´ó¼ÒÒ²²»»áÏëÔÚÕâÀï»¨Ì«¶àÊ±¼ä¡£
-// »·¾³ËµÃ÷£ºwindows11, Visual Studio2022, OpenCV4.8.0,¿ÉÒÔËÑË÷ÈçºÎÔÚVisual StudioÅäÖÃOpenCV
-// ×¢Òâ£ºÕâ¸ö³ÌĞòÓĞĞ©ÃæÏò½á¹û£¬Èç¹û»»ÁËÍ¼Æ¬Òª¸ÄºÜ¶à²ÎÊı¡£
+//tch gxh
+// é¡¹ç›®è¯´æ˜
+// æœºå™¨è§†è§‰å°ºå¯¸æµ‹é‡é¡¹ç›®
+// å‘ç¨‹åºè¾“å…¥å›¾ç‰‡ï¼Œæµ‹é‡å¯¹åº”çš„ç‰©ä½“å®½åº¦å’Œé—´éš”å®½åº¦
+// 1Dæµ‹é‡ï¼Œäºšåƒç´ ç²¾åº¦ï¼Œå¹¶è€ƒè™‘è®¡ç®—æ—¶é—´
+// è¯¥ç¨‹åºä»…ä¾›å‚è€ƒï¼Œå®é™…ä¸Šå†™å¾—æ¯”è¾ƒçƒ‚ä½†æ˜¯ç½‘ä¸Šåˆæ²¡æœ‰å¤ªå¤šå‚è€ƒçš„æ‰€ä»¥æˆ‘ä¸Šä¼ äº†æˆ‘çš„ï¼Œå‚è€ƒçš„ä¸»è¦æ˜¯ä¸€ä¸ªå­¦æ ¡çš„ï¼Œå¤§å®¶ä¹Ÿä¸ä¼šæƒ³åœ¨è¿™é‡ŒèŠ±å¤ªå¤šæ—¶é—´ã€‚
+// ç¯å¢ƒè¯´æ˜ï¼šwindows11, Visual Studio2022, OpenCV4.8.0,å¯ä»¥æœç´¢å¦‚ä½•åœ¨Visual Studioé…ç½®OpenCV
+// æ³¨æ„ï¼šè¿™ä¸ªç¨‹åºæœ‰äº›é¢å‘ç»“æœï¼Œå¦‚æœæ¢äº†å›¾ç‰‡è¦æ”¹å¾ˆå¤šå‚æ•°ã€‚
 //  ***************************************	//
-// ÉÙÊı¿É¹©²Î¿¼£º1.Ê¹ÓÃ#include <chrono>¼ÆÊ±£¬Äã¿ÉÄÜÃ»ÕÒµ½ÔõÃ´¾«È·¼ÆÊ±µÄ·½·¨£¬¿ÉÒÔÁË½âÏÂÕâ¸ö
-// start_time = chrono::high_resolution_clock::now();//»ñµÃ¿ªÊ¼Ê±¼ä£¬Í¬Àí»ñµÃ½áÊøÊ±¼ä 
-//  run_time = chrono::duration<double, milli>(stop_time - start_time).count();// ¼ÆËãÔËĞĞÊ±¼ä,milli´ú±íºÁÃë
-// 2. ½ØÈ¡ROI£¬¼õÉÙËÑË÷·¶Î§£¬²»ÊÇËµÒªÏñ¿Î³ÌÀïÒªÆ¥Åä£¬¶øÊÇÖ±½Ó¾ØĞÎ½ØÈ¡
-// 3. Èç¹ûÄãÓĞĞ©²»Ïë¸ãÁË£¬Ò²¿ÉÒÔ¿´ÏÂÈıµãÁ½´Î·¨µÃµ½ÑÇÏñËØ¾«¶È¡¢×îĞ¡¶ş³ËµÈÆäËûµÄÄÚÈİ
+// å°‘æ•°å¯ä¾›å‚è€ƒï¼š1.ä½¿ç”¨#include <chrono>è®¡æ—¶ï¼Œä½ å¯èƒ½æ²¡æ‰¾åˆ°æ€ä¹ˆç²¾ç¡®è®¡æ—¶çš„æ–¹æ³•ï¼Œå¯ä»¥äº†è§£ä¸‹è¿™ä¸ª
+// start_time = chrono::high_resolution_clock::now();//è·å¾—å¼€å§‹æ—¶é—´ï¼ŒåŒç†è·å¾—ç»“æŸæ—¶é—´ 
+//  run_time = chrono::duration<double, milli>(stop_time - start_time).count();// è®¡ç®—è¿è¡Œæ—¶é—´,milliä»£è¡¨æ¯«ç§’
+// 2. æˆªå–ROIï¼Œå‡å°‘æœç´¢èŒƒå›´ï¼Œä¸æ˜¯è¯´è¦åƒè¯¾ç¨‹é‡Œè¦åŒ¹é…ï¼Œè€Œæ˜¯ç›´æ¥çŸ©å½¢æˆªå–
+// 3. å¦‚æœä½ æœ‰äº›ä¸æƒ³æäº†ï¼Œä¹Ÿå¯ä»¥çœ‹ä¸‹ä¸‰ç‚¹ä¸¤æ¬¡æ³•å¾—åˆ°äºšåƒç´ ç²¾åº¦ã€æœ€å°äºŒä¹˜ç­‰å…¶ä»–çš„å†…å®¹
 // ***************************************	//
 #include <opencv2/opencv.hpp>
 #include <iostream>
@@ -26,45 +27,45 @@
 using namespace cv;
 using namespace std;
 int cols_test[24] = { 80,90,100,110,120,130,140,150,160,170,180,190,200,210,220,230,240,250,260,270,280,290,300,310 };
-// ÓÃÓÚÊ¶±ğ²¢²âÁ¿Á½Æ½ĞĞÏß¶Î¾àÀëºÍ°ëÔ²°ë¾¶£¬ÑÇÏñËØ¾«¶È
+// ç”¨äºè¯†åˆ«å¹¶æµ‹é‡ä¸¤å¹³è¡Œçº¿æ®µè·ç¦»å’ŒåŠåœ†åŠå¾„ï¼Œäºšåƒç´ ç²¾åº¦
 class Measure {
 public:
-    // ¹¹Ôìº¯Êı
+    // æ„é€ å‡½æ•°
     Measure() { }
-    ~Measure() { }// Îö¹¹º¯Êı
-    //»ñÈ¡Ô­Ê¼Í¼ÏñÂ·¾¶ºÍĞòºÅ
+    ~Measure() { }// ææ„å‡½æ•°
+    //è·å–åŸå§‹å›¾åƒè·¯å¾„å’Œåºå·
     void find_path(const string image_path, int s);
-    //³õÊ¼´¦ÀíÍ¼Æ¬
+    //åˆå§‹å¤„ç†å›¾ç‰‡
     void Image_Process();
-    //²âÁ¿Ö±Ïß
+    //æµ‹é‡ç›´çº¿
     void Measure_line();
-    //²âÁ¿Ô²»¡
+    //æµ‹é‡åœ†å¼§
     void Measure_circle();
-    //ÏÔÊ¾½á¹û±£´æÍ¼Æ¬
+    //æ˜¾ç¤ºç»“æœä¿å­˜å›¾ç‰‡
     void show_message();
-    // ¿ªÊ¼¼ÆÊ±
+    // å¼€å§‹è®¡æ—¶
     void Start_Timer();
-    // ½áÊø¼ÆÊ±£¬ÒÔºÁÃëÎªµ¥Î»µÃµ½³ÌĞòÔËĞĞÊ±¼ä
+    // ç»“æŸè®¡æ—¶ï¼Œä»¥æ¯«ç§’ä¸ºå•ä½å¾—åˆ°ç¨‹åºè¿è¡Œæ—¶é—´
     void Stop_Timer();
-    //Ğ¡Êı±£ÁôĞ¡Êıµãºó3Î»ÔÙ×ª×Ö·û´®
+    //å°æ•°ä¿ç•™å°æ•°ç‚¹å3ä½å†è½¬å­—ç¬¦ä¸²
     friend string my_to_string(double value);
 private:
-    Mat original_image;     // Ô­Ê¼Í¼Ïñ
-    Mat process_image;      //´¦ÀíºóÍ¼Ïñ
-    Mat ROI;                //²âÁ¿ÇøÓò
-    double point24x4[4][24] = {};//±ßÔµ²âÁ¿µÃµ½×ø±ê0ºÍ3ÊÇÍâÃæµÄÖ±Ïß£¬1ºÍ2ÊÇÀïÃæµÄÖ±Ïß£¬ºá×ø±ê80¡¢90µ½310
-    double point12x2[2][12] = {};//Á½²àÔ²£¬2ÊÇ×óÓÒÁ½¸ö£¬12ÊÇÉÏÏÂ¶Ô³Æ²ÉÑù30¡¢35µ½55µÄ±ßÔµµã
-    double k[4] = {};//Ö±ÏßĞ±ÂÊ
-    double b[4] = {};//Ö±Ïß½Ø¾à
-    double distance[2] = {};      // Íâ²àºÍÄÚ²àÆ½ĞĞÏß¶ÎÖ®¼äµÄ¾àÀë
-    double radius[2] = {};     //×ó²àºÍÓÒ²àÔ²µÄ°ë¾¶
-    Point2d center[2] = {};//Ô²ĞÄ×ø±ê
-    // ¼ÆÊ±Æ÷£¬ÓÃÓÚ¼ÆËã³ÌĞòÔËĞĞÊ±¼ä
+    Mat original_image;     // åŸå§‹å›¾åƒ
+    Mat process_image;      //å¤„ç†åå›¾åƒ
+    Mat ROI;                //æµ‹é‡åŒºåŸŸ
+    double point24x4[4][24] = {};//è¾¹ç¼˜æµ‹é‡å¾—åˆ°åæ ‡0å’Œ3æ˜¯å¤–é¢çš„ç›´çº¿ï¼Œ1å’Œ2æ˜¯é‡Œé¢çš„ç›´çº¿ï¼Œæ¨ªåæ ‡80ã€90åˆ°310
+    double point12x2[2][12] = {};//ä¸¤ä¾§åœ†ï¼Œ2æ˜¯å·¦å³ä¸¤ä¸ªï¼Œ12æ˜¯ä¸Šä¸‹å¯¹ç§°é‡‡æ ·30ã€35åˆ°55çš„è¾¹ç¼˜ç‚¹
+    double k[4] = {};//ç›´çº¿æ–œç‡
+    double b[4] = {};//ç›´çº¿æˆªè·
+    double distance[2] = {};      // å¤–ä¾§å’Œå†…ä¾§å¹³è¡Œçº¿æ®µä¹‹é—´çš„è·ç¦»
+    double radius[2] = {};     //å·¦ä¾§å’Œå³ä¾§åœ†çš„åŠå¾„
+    Point2d center[2] = {};//åœ†å¿ƒåæ ‡
+    // è®¡æ—¶å™¨ï¼Œç”¨äºè®¡ç®—ç¨‹åºè¿è¡Œæ—¶é—´
     chrono::steady_clock::time_point start_time;
     chrono::steady_clock::time_point stop_time;
-    //´æ´¢ÔËĞĞÊ±¼ä
+    //å­˜å‚¨è¿è¡Œæ—¶é—´
     double run_time = 0;
-    int sequence=-1;//Ë³Ğò
+    int sequence=-1;//é¡ºåº
 };
 void Measure::find_path(const string image_path, int s)
 {
@@ -74,13 +75,13 @@ void Measure::find_path(const string image_path, int s)
 
 void Measure::Image_Process()
 {
-    Start_Timer();//¿ªÊ¼¼ÆÊ±
+    Start_Timer();//å¼€å§‹è®¡æ—¶
     Mat gray_image;
-    // ¸ù¾İÊäÈëµÄÔ­Ê¼Í¼Ïñ£¬´´½¨¶ÔÓ¦µÄ»Ò¶ÈÍ¼
+    // æ ¹æ®è¾“å…¥çš„åŸå§‹å›¾åƒï¼Œåˆ›å»ºå¯¹åº”çš„ç°åº¦å›¾
     resize(original_image, process_image, Size(), 0.3, 0.3, INTER_AREA); 
     cvtColor(process_image, gray_image, COLOR_BGR2GRAY);
-    ROI = Mat(gray_image, Rect(140, 270, 400, 180));//ÒòÎªÃ¿ÕÅÍ¼Î»ÖÃ²î²»¶à£¬ËùÒÔ²Ã¼ôÎªROI
-    equalizeHist(ROI, ROI);//Ö±·½Í¼¾ùºâ»¯
+    ROI = Mat(gray_image, Rect(140, 270, 400, 180));//å› ä¸ºæ¯å¼ å›¾ä½ç½®å·®ä¸å¤šï¼Œæ‰€ä»¥è£å‰ªä¸ºROI
+    equalizeHist(ROI, ROI);//ç›´æ–¹å›¾å‡è¡¡åŒ–
 }
 
 static int randnum(int min, int max)
@@ -89,7 +90,7 @@ static int randnum(int min, int max)
     return  num;
 }
 string my_to_string(double value) {
-    // ½«¸¡µãÊıÒÔ¶¨µãÊıµÄĞÎÊ½Êä³ö£¬²¢±£ÁôÈıÎ»Ğ¡Êı
+    // å°†æµ®ç‚¹æ•°ä»¥å®šç‚¹æ•°çš„å½¢å¼è¾“å‡ºï¼Œå¹¶ä¿ç•™ä¸‰ä½å°æ•°
     std::ostringstream stream;
     stream << std::fixed << std::setprecision(3) << value;
     return stream.str();
@@ -98,18 +99,18 @@ void Measure::Measure_line()
 {
     int cols_size = 0;
     int rows_size = 0;
-    int differ[180] = {};//´æ´¢²î·Ö
+    int differ[180] = {};//å­˜å‚¨å·®åˆ†
     for (int k = 80; k <= 310; k = k + 10)
     {
         for (int j = 0; j <= 178; j++)
         {
-            uchar data_1 = ROI.ptr<uchar>(j)[k]; // È¡ÏñËØ
-            uchar data_2 = ROI.ptr<uchar>(j + 1)[k]; // È¡ÏÂÒ»¸öÏñËØ
-            differ[j] = (int)data_2 - (int)data_1;//Ç°Ïò²î·Ö
+            uchar data_1 = ROI.ptr<uchar>(j)[k]; // å–åƒç´ 
+            uchar data_2 = ROI.ptr<uchar>(j + 1)[k]; // å–ä¸‹ä¸€ä¸ªåƒç´ 
+            differ[j] = (int)data_2 - (int)data_1;//å‰å‘å·®åˆ†
         }
         for (int i = 1; i < 178; i++)
         {
-            if (abs(differ[i]) >= 120)//Ç°Ïò²î·Ö´ó£¬¾ÍÓÃÈıµã¶ş´ÎµÃµ½ÑÇÏñËØ±ßÔµ
+            if (abs(differ[i]) >= 120)//å‰å‘å·®åˆ†å¤§ï¼Œå°±ç”¨ä¸‰ç‚¹äºŒæ¬¡å¾—åˆ°äºšåƒç´ è¾¹ç¼˜
             {
                 point24x4[rows_size][cols_size] = i - 0.5 * (differ[i + 1] - differ[i]) / (differ[i] + differ[i + 1] - 2 * differ[i - 1]);
                 rows_size++;
@@ -117,12 +118,12 @@ void Measure::Measure_line()
         }
         if (rows_size != 4)
         {
-            cout << "´íÎó" <<k<< endl;//kÁĞÎ´¼ì²éÊ¶±ğµ½4¸ö
+            cout << "é”™è¯¯" <<k<< endl;//kåˆ—æœªæ£€æŸ¥è¯†åˆ«åˆ°4ä¸ª
         }
         cols_size++;
-        rows_size = 0;//ÖØÖÃ¿ªÊ¼ĞÂµÄÒ»ÁĞ
+        rows_size = 0;//é‡ç½®å¼€å§‹æ–°çš„ä¸€åˆ—
     }
-    //×îĞ¡¶ş³ËÖ±ÏßÄâºÏ
+    //æœ€å°äºŒä¹˜ç›´çº¿æ‹Ÿåˆ
     double sum1 = 0.0, sum2 = 0.0;
     for (int m = 0; m < 24; m++)
     {
@@ -151,7 +152,7 @@ void Measure::Measure_line()
         else {
             k[j] = 0;
             b[j] = 0;
-            std::cout << "²âÁ¿Ê§°Ü" << endl;
+            std::cout << "æµ‹é‡å¤±è´¥" << endl;
         }
         sum_x2 = 0.0;
         sum_y = 0.0;
@@ -161,43 +162,43 @@ void Measure::Measure_line()
     distance[0] = sum1 / (24 * sqrt(1 + pow((k[0] + k[3]) / 2, 2)));
     distance[1] = sum2 / (24 * sqrt(1 + pow((k[1] + k[2]) / 2, 2)));
 }
-void Measure::Measure_circle()//×îĞ¡¶ş³ËÄâºÏÔ²
+void Measure::Measure_circle()//æœ€å°äºŒä¹˜æ‹Ÿåˆåœ†
 {
-    // »ñÈ¡Ô²±ßÔµµã
+    // è·å–åœ†è¾¹ç¼˜ç‚¹
     int cols_size1 = 0, cols_size2 = 0;
     int differ[180] = {};
-    for (int k = 30; k <= 55; k = k + 5)//×ó²à²É¼¯2x6¸öµã
+    for (int k = 30; k <= 55; k = k + 5)//å·¦ä¾§é‡‡é›†2x6ä¸ªç‚¹
     {
         for (int j = 0; j <= 178; j++)
         {
-            uchar data_1 = ROI.ptr<uchar>(j)[k]; // È¡ÏñËØ
-            uchar data_2 = ROI.ptr<uchar>(j + 1)[k]; // È¡ÏÂÒ»¸öÏñËØ
-            differ[j] = (int)data_2 - (int)data_1;//Ç°Ïò²î·Ö
+            uchar data_1 = ROI.ptr<uchar>(j)[k]; // å–åƒç´ 
+            uchar data_2 = ROI.ptr<uchar>(j + 1)[k]; // å–ä¸‹ä¸€ä¸ªåƒç´ 
+            differ[j] = (int)data_2 - (int)data_1;//å‰å‘å·®åˆ†
         }
         for (int i = 1; i < 178; i++)
         {
-            if (abs(differ[i]) >= 120)//Ç°Ïò²î·Ö´ó£¬¾ÍÓÃÈıµã¶ş´ÎµÃµ½ÑÇÏñËØ±ßÔµ
+            if (abs(differ[i]) >= 120)//å‰å‘å·®åˆ†å¤§ï¼Œå°±ç”¨ä¸‰ç‚¹äºŒæ¬¡å¾—åˆ°äºšåƒç´ è¾¹ç¼˜
             {
                 point12x2[0][cols_size1] = i - 0.5 * (differ[i + 1] - differ[i]) / (differ[i] + differ[i + 1] - 2 * differ[i - 1]);
                 cols_size1++;
             }
         }
     }
-    for (int k = 335; k <= 335 + 25; k = k + 5)//ÓÒ²à²É¼¯2x6¸öµã
+    for (int k = 335; k <= 335 + 25; k = k + 5)//å³ä¾§é‡‡é›†2x6ä¸ªç‚¹
     {
         for (int j = 0; j <= 178; j++)
         {
-            uchar data_1 = ROI.ptr<uchar>(j)[k]; // È¡ÏñËØ
-            uchar data_2 = ROI.ptr<uchar>(j + 1)[k]; // È¡ÏÂÒ»¸öÏñËØ
-            differ[j] = (int)data_2 - (int)data_1;//Ç°Ïò²î·Ö
+            uchar data_1 = ROI.ptr<uchar>(j)[k]; // å–åƒç´ 
+            uchar data_2 = ROI.ptr<uchar>(j + 1)[k]; // å–ä¸‹ä¸€ä¸ªåƒç´ 
+            differ[j] = (int)data_2 - (int)data_1;//å‰å‘å·®åˆ†
         }
         for (int i = 25; i < 178; i++)
         {
-            if (abs(differ[i]) >= 100 && abs(differ[i + 1]) <= 100 && abs(differ[i - 1]) <= 100)//Ç°Ïò²î·Ö´ó£¬¾ÍÓÃÈıµã¶ş´ÎµÃµ½ÑÇÏñËØ±ßÔµ
+            if (abs(differ[i]) >= 100 && abs(differ[i + 1]) <= 100 && abs(differ[i - 1]) <= 100)//å‰å‘å·®åˆ†å¤§ï¼Œå°±ç”¨ä¸‰ç‚¹äºŒæ¬¡å¾—åˆ°äºšåƒç´ è¾¹ç¼˜
             {
                 if (i > 3 && i < 174)
                 {
-                    if (abs(differ[i - 4]) <= 80 && abs(differ[i + 4]) <= 80)//ÅÅ³ıºÚµãµÄ¸ÉÈÅ
+                    if (abs(differ[i - 4]) <= 80 && abs(differ[i + 4]) <= 80)//æ’é™¤é»‘ç‚¹çš„å¹²æ‰°
                     {
                         point12x2[1][cols_size2] = i - 0.5 * (differ[i + 1] - differ[i]) / (differ[i] + differ[i + 1] - 2 * differ[i - 1]);
                         cols_size2++;
@@ -211,7 +212,7 @@ void Measure::Measure_circle()//×îĞ¡¶ş³ËÄâºÏÔ²
             }
         }
     }
-    //×óÓÒÁ½²àµÄÔ²×îĞ¡¶ş³ËÄâºÏ£¬Ëã·¨Èç´Ë
+    //å·¦å³ä¸¤ä¾§çš„åœ†æœ€å°äºŒä¹˜æ‹Ÿåˆï¼Œç®—æ³•å¦‚æ­¤
     Point2d p[2][12] = {};
     for (int j = 0; j < 12; j++)
     {
@@ -257,7 +258,7 @@ void Measure::Measure_circle()//×îĞ¡¶ş³ËÄâºÏÔ²
     center[0].x = a / (-2.0);
     center[0].y = b / (-2.0);
     radius[0] = sqrt(a * a + b * b - 4 * c) / 2.0;
-    //Çå¿ÕËãÓÒ±ß
+    //æ¸…ç©ºç®—å³è¾¹
     sum_x = sum_y = 0.0f;
     sum_x2 = sum_y2 = 0.0f;
     sum_x3 = sum_y3 = 0.0f;
@@ -292,7 +293,7 @@ void Measure::Measure_circle()//×îĞ¡¶ş³ËÄâºÏÔ²
 }
 void Measure::show_message()
 {
-    //Ö±Ïß»æÖÆ
+    //ç›´çº¿ç»˜åˆ¶
     Point p1 = Point(140 + 80, 270 + k[0] * 80 + b[0]);
     Point p2 = Point(140 + 305, 270 + k[0] * 305 + b[0]);
     Point p3 = Point(140 + 85, 270 + k[1] * 85 + b[1]);
@@ -306,44 +307,44 @@ void Measure::show_message()
     line(process_image, p3, p4, color_line, 2, LINE_AA);
     line(process_image, p5, p6, color_line, 2, LINE_AA);
     line(process_image, p7, p8, color_line, 2, LINE_AA);
-    // ÉèÖÃÎÄ±¾²ÎÊı
+    // è®¾ç½®æ–‡æœ¬å‚æ•°
     string text1 = "d1=" + my_to_string(distance[0] / 0.3);
     string text2 = "d2=" + my_to_string(distance[1] / 0.3);
-    // ÔÚÍ¼ÏñÉÏ»æÖÆÎÄ±¾
-    cv::Point textPosition1(20, 25); // ÎÄ±¾Î»ÖÃ
+    // åœ¨å›¾åƒä¸Šç»˜åˆ¶æ–‡æœ¬
+    cv::Point textPosition1(20, 25); // æ–‡æœ¬ä½ç½®
     putText(process_image, text1, textPosition1, cv::FONT_HERSHEY_SIMPLEX, 1, color_line, 1);
-    cv::Point textPosition2(20, 55); // ÎÄ±¾Î»ÖÃ
+    cv::Point textPosition2(20, 55); // æ–‡æœ¬ä½ç½®
     cv::putText(process_image, text2, textPosition2, cv::FONT_HERSHEY_SIMPLEX, 1, color_line, 1);
 
-    //Ô²»æÖÆ
+    //åœ†ç»˜åˆ¶
     cv::Scalar Color_Circle(34, 121, 246);
     ellipse(process_image, Point(center[0].x + 140, center[0].y + 270), Size(radius[0], radius[0]), 0, 90 + randnum(0, 10), 270 - randnum(0, 10), Scalar(34, 121, 246), 2);
     ellipse(process_image, Point(center[1].x + 140, center[1].y + 270), Size(radius[1], radius[1]), 180, 90 + randnum(0, 10), 270 - randnum(0, 10), Scalar(34, 121, 246), 2);
-    // ÉèÖÃÎÄ±¾²ÎÊı
-    cv::Point textPosition3(20, 85); // ÎÄ±¾Î»ÖÃ
+    // è®¾ç½®æ–‡æœ¬å‚æ•°
+    cv::Point textPosition3(20, 85); // æ–‡æœ¬ä½ç½®
     string text3 = "r1=" + my_to_string(radius[0] / 0.3);
     string text4 = "r2=" + my_to_string(radius[1] / 0.3);
-    // ÔÚÍ¼ÏñÉÏ»æÖÆÎÄ±¾
+    // åœ¨å›¾åƒä¸Šç»˜åˆ¶æ–‡æœ¬
     putText(process_image, text3, textPosition3, cv::FONT_HERSHEY_SIMPLEX, 1, Color_Circle, 1);
-    cv::Point textPosition4(20, 115); // ÎÄ±¾Î»ÖÃ
+    cv::Point textPosition4(20, 115); // æ–‡æœ¬ä½ç½®
     cv::putText(process_image, text4, textPosition4, cv::FONT_HERSHEY_SIMPLEX, 1, Color_Circle, 1);
-    cv::Point textPosition5(20, 145); // ÎÄ±¾Î»ÖÃ
+    cv::Point textPosition5(20, 145); // æ–‡æœ¬ä½ç½®
     Stop_Timer();
     string text5 = "Time:" + my_to_string(run_time) + "ms";
     cv::putText(process_image, text5, textPosition5, cv::FONT_HERSHEY_SIMPLEX, 1, Scalar(169, 159, 8), 1);
-    imwrite("D:\\start\\last" + to_string(sequence) + ".bmp", process_image);//Ìí¼Ósequence°´ÕÕË³ĞòÃüÃûÊä³öÍ¼Æ¬
+    imwrite("D:\\start\\last" + to_string(sequence) + ".bmp", process_image);//æ·»åŠ sequenceæŒ‰ç…§é¡ºåºå‘½åè¾“å‡ºå›¾ç‰‡
 }
 
 void Measure::Start_Timer()
 {
-    // ¼ÇÂ¼¿ªÊ¼Ê±¼ä
+    // è®°å½•å¼€å§‹æ—¶é—´
     start_time = chrono::high_resolution_clock::now();
 }
 void Measure::Stop_Timer()
 {
-    // ¼ÇÂ¼½áÊøÊ±¼ä
+    // è®°å½•ç»“æŸæ—¶é—´
     stop_time = chrono::high_resolution_clock::now();
-    // ¼ÆËãÔËĞĞÊ±¼ä,milli´ú±íºÁÃë
+    // è®¡ç®—è¿è¡Œæ—¶é—´,milliä»£è¡¨æ¯«ç§’
     run_time = chrono::duration<double, milli>(stop_time - start_time).count();
 }
 int main() {
@@ -351,12 +352,12 @@ int main() {
     Measure picture[6];
     for (int i = 0; i <= 5; i++)
     {
-        picture[i].find_path("D:\\start\\¿ÎÌâ5Í¼Ïñ\\" + to_string(i + 1) + ".bmp", i + 1);
+        picture[i].find_path("D:\\start\\è¯¾é¢˜5å›¾åƒ\\" + to_string(i + 1) + ".bmp", i + 1);
         picture[i].Image_Process();
         picture[i].Measure_line();
         picture[i].Measure_circle();
         picture[i].show_message();
-        //cout << "²âÁ¿Íê±Ï"+to_string(i+1) << endl;
+        //cout << "æµ‹é‡å®Œæ¯•"+to_string(i+1) << endl;
     }
     waitKey(0);
     return 0;
